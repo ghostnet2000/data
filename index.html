@@ -29,7 +29,7 @@
             <script>
                 function InitChart() {
                     var start_date = new Date(2015, 0, 1);
-                    var end_date = new Date(2015, 0, 10);
+                    var end_date = new Date(2015, 0, 3);
                     var data = get_data(start_date, end_date, 15)
 
 
@@ -48,7 +48,7 @@
                         .domain([start_date, end_date])    // values between for month of january
                         .range([MARGINS.left, WIDTH - MARGINS.right]).
                         */
-                        xScale = d3.time.scale().domain([start_date, end_date])
+                        xScale = d3.time.scale().domain([new Date('2015-01-01T12:00:00.000Z'), new Date('2015-01-03T00:00:00.000Z')])
                             .range([MARGINS.left, WIDTH - MARGINS.right]),
 
                         yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0, 500]),
@@ -73,10 +73,11 @@
 
                     var lineGen = d3.svg.line()
                         .x(function(d) {
-                            return xScale(d.accumulated);
+                            return xScale(d.date);
                         })
                         .y(function(d) {
-                            return yScale(d.date);
+                            console.log(d.date);
+                            return yScale(d.accumulated);
                         })
                         .interpolate("basis");
 
