@@ -9,7 +9,7 @@ function addMinutes(date, minutes) {
     return new Date(date.getTime() + minutes*60000);
 }
 
-function get_data(start_date, end_date) {
+function get_data(start_date, end_date, period) {
     
     d = start_date;
     accumulate = 0
@@ -18,7 +18,7 @@ function get_data(start_date, end_date) {
         number = generate_random( 0, 10, 0);
         accumulate += number;
         data.push({ date: d, value: number, accumulated: accumulate });
-        d = addMinutes(d, 15);
+        d = addMinutes(d, period);
     }
     
     return data;
@@ -27,4 +27,4 @@ function get_data(start_date, end_date) {
 s = new Date(2015,0,2)
 e = new Date(2015,0,3)
 
-console.log( get_data(s,e))
+console.log( get_data(s,e, 30))
