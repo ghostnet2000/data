@@ -23,8 +23,9 @@ function get_data(start_date, end_date, period) {
     
     return data;
 }
-
+/*
 s = new Date(2015,0,2)
 e = new Date(2015,0,3)
 
 console.log( get_data(s,e, 30))
+*/
