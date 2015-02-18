@@ -12,17 +12,19 @@ function addMinutes(date, minutes) {
 function get_data(start_date, end_date) {
     
     d = start_date;
-    
+    accumulate = 0
+
     while( d <= end_date ){
-        number = generate_random( 0, 10, 3);
-        data.push({ date: d, value: number });
+        number = generate_random( 0, 10, 0);
+        accumulate += number;
+        data.push({ date: d, value: number, accumulated: accumulate });
         d = addMinutes(d, 15);
     }
     
     return data;
 }
 
-s = new Date(2015,10,2)
-e = new Date(2015,10,3)
+s = new Date(2015,0,2)
+e = new Date(2015,0,3)
 
 console.log( get_data(s,e))
